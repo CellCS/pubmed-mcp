@@ -34,18 +34,46 @@ If `MCP_BEARER_TOKENS` is empty, authentication is disabled.
 ## Run
 
 ```bash
-uv run main.py
+sh deploy-container.sh
 ```
 
-or
+Health check
 
 ```bash
-uvicorn app.server:app --host 0.0.0.0 --port 8000
+curl http://localhost:8001/health
 ```
 
-Health check: `GET /health`
+MCP endpoint: `<host>/pubmed-mcp` like `http://127.0.0.1:8001/pubmed-mcp`
 
-MCP endpoint: `<host><MCP_HTTP_PATH>/`
+## MCP Configuration
+
+For **OpenCode**
+
+```json
+"pubmed-mcp": {
+    "type": "remote",
+    "url": "http://127.0.0.1:8001/pubmed-mcp",
+    "oauth": false,
+    "headers": {
+        "Authorization": "Bearer your-mcp-token-1"
+    }
+}
+```
+
+For **Cline**:
+
+```json
+"pubmed-mcp": {
+    "autoApprove": [],
+    "disabled": false,
+    "timeout": 60,
+    "type": "streamableHttp",
+    "url": "http://127.0.0.1:8001/pubmed-mcp",
+    "headers": {
+    "Authorization": "Bearer your-mcp-token-1"
+    }
+}
+```
 
 ## Notes
 

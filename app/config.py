@@ -1,7 +1,7 @@
 from typing import Any
 
 from fastapi.responses import JSONResponse
-from pydantic import Field
+from pydantic import Field, field_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 from starlette.middleware.base import BaseHTTPMiddleware
 
@@ -14,6 +14,16 @@ class Settings(BaseSettings):
     mcp_bearer_tokens: str = Field(default="", alias="MCP_BEARER_TOKENS")
 
     model_config = SettingsConfigDict(env_file=".env", env_file_encoding="utf-8", extra="ignore")
+
+    @field_validator("pubmed_eutils_limit", mode="before")
+    @classmethod
+    def parse_pubmed_limit(cls, value: Any) -> int:
+        if isinstance(value, int):
+            return max(1, value)
+        if isinstance(value, str):
+            cleaned = value.split("#", 1)[0].strip()
+            return max(1, int(cleaned))
+        return max(1, int(value))
 
     @property
     def normalized_mcp_http_path(self) -> str:
