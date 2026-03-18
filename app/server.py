@@ -40,3 +40,9 @@ app.mount(settings.normalized_mcp_http_path, mcp_app)
 @app.get("/health")
 async def healthcheck() -> dict[str, str]:
     return {"status": "ok"}
+
+
+def main() -> None:
+    import uvicorn
+
+    uvicorn.run("app.server:app", port=8000, reload=False)

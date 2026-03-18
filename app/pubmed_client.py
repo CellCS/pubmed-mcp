@@ -1,9 +1,9 @@
 import asyncio
 import time
-import xml.etree.ElementTree as ET
 from typing import Any
 
 import httpx
+from defusedxml import ElementTree as ET
 
 from app.models import Article, SearchResponse
 
@@ -133,7 +133,7 @@ class PubMedEUtilsClient:
         return _build_article(pmid=clean_pmid, summary=summary, details=parsed or {})
 
 
-def _xml_text(element: ET.Element | None, path: str) -> str:
+def _xml_text(element: Any | None, path: str) -> str:
     if element is None:
         return ""
     found = element.find(path)

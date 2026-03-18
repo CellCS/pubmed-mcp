@@ -9,3 +9,5 @@ __pycache__
 .env
 AGENTS.md
 deploy-container.sh
+security-scan-results/
+security-scan.sh

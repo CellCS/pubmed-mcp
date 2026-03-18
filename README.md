@@ -47,6 +47,22 @@ curl http://localhost:8001/health
 
 MCP endpoint: `<host>/pubmed-mcp` like `http://127.0.0.1:8001/pubmed-mcp`
 
+## Security Scan
+
+Install all dependencies including dev tools:
+
+```bash
+uv sync --dev
+```
+
+Run the security scan:
+
+```bash
+bash security-scan.sh
+```
+
+Artifacts are generated in `security-scan-results/`.
+
 ## MCP Configuration
 
 For **OpenCode**
@@ -83,3 +99,15 @@ For **Cline**:
 - Keep your `PUBMED_EMAIL` valid and follow NCBI usage guidance: https://www.ncbi.nlm.nih.gov/books/NBK25497/
 - Check `E-utilities Quick Start` for NCBI usage guidance: https://www.ncbi.nlm.nih.gov/books/NBK25500/#chapter1.For_More_Information_8
 - Check `A General Introduction to the E-utilities` for NCBI usage guidance: https://www.ncbi.nlm.nih.gov/books/NBK25497/
+
+## Security Scan Summary
+
+| Scan | Status |
+|---|---|
+| Dependency Scan | PASS |
+| Static Security Scan | PASS |
+| Secret Scan | PASS |
+| Container Scan | PASS |
+| SBOM | PASS |
+
+[Security Details](/security-scan-results/security_checklist.md)

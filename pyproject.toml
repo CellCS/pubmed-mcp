@@ -5,6 +5,7 @@ description = "MCP server for PubMed paper search via NCBI E-utilities"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
+    "defusedxml>=0.7.1",
     "fastapi>=0.116.0",
     "fastmcp>=2.14.0",
     "httpx>=0.28.0",
@@ -13,4 +14,10 @@ dependencies = [
 ]
 
 [project.scripts]
-pubmed-mcp = "main:main"
+pubmed-mcp = "app.server:main"
+
+[dependency-groups]
+dev = [
+    "bandit>=1.9.4",
+    "pip-audit>=2.10.0",
+]
