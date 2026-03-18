@@ -1,6 +1,8 @@
 # PubMed MCP Server
 
-MCP server built with Python, FastAPI, and FastMCP for searching PubMed papers using NCBI E-utilities.
+PubMed MCP Server built with Python, FastAPI, and FastMCP for searching PubMed papers using NCBI E-utilities.
+
+![pubmed-mcp archi](assets/pubmed-mcp-arch.png)
 
 ## Features
 
@@ -79,3 +81,5 @@ For **Cline**:
 
 - This server uses NCBI E-utilities API endpoints (`esearch`, `esummary`, `efetch`).
 - Keep your `PUBMED_EMAIL` valid and follow NCBI usage guidance: https://www.ncbi.nlm.nih.gov/books/NBK25497/
+- Check `E-utilities Quick Start` for NCBI usage guidance: https://www.ncbi.nlm.nih.gov/books/NBK25500/#chapter1.For_More_Information_8
+- Check `A General Introduction to the E-utilities` for NCBI usage guidance: https://www.ncbi.nlm.nih.gov/books/NBK25497/
