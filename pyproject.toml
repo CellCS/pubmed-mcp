@@ -1,0 +1,16 @@
+[project]
+name = "pubmed-mcp"
+version = "0.1.0"
+description = "MCP server for PubMed paper search via NCBI E-utilities"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "fastapi>=0.116.0",
+    "fastmcp>=2.14.0",
+    "httpx>=0.28.0",
+    "pydantic-settings>=2.10.0",
+    "uvicorn>=0.35.0",
+]
+
+[project.scripts]
+pubmed-mcp = "main:main"
